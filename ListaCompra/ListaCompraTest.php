@@ -6,14 +6,14 @@ use PHPUnit\Framework\TestCase;
 class ListaCompraTest extends TestCase{
     private ListaCompra $Lista;
     
-    protected function setup(): void{
+    protected function setUp(): void{
         $this->Lista = new ListaCompra();
     }
 
     public function test_añadir_elemento_devuelve_lista_actuaizada(){
-        $resultado = $this->lista->procesarInstruccion("añadir pan 2");
+        $resultado = $this->Lista->procesarInstruccion("añadir pan 2");
 
-        asset($resultado, "pan x2");
+        $this->assertEquals("pan x2",$resultado);
     }
 
 }
