@@ -18,7 +18,7 @@
 
         private function eliminarProducto(string $elemento){
             if(!isset($this->lista[$elemento])){
-                return "el producto seleccionado no existe"
+                return "el producto seleccionado no existe";
             }
             else{
                 unset($this->lsita[$elemento]);
