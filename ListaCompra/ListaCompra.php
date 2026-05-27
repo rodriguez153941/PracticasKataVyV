@@ -24,6 +24,9 @@
                 unset($this->lista[$elemento]);
             }
         }
+        private function vaciarLista(){
+            $this->lista = [];
+        }
 
         private function mostrarResultado(): string{
             if(empty($this->lista)){
