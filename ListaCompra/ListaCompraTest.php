@@ -22,9 +22,9 @@ class ListaCompraTest extends TestCase{
     public function test_eliminar_elemento_devuelve_lista_actualizada(){
         $resultado = $this->Lista->procesarInstruccion("añadir pan 2");
 
-        $this->asserEquals("pan x2",$resultado);
+        $this->assertEquals("pan x2",$resultado);
 
-        $resultado2 = $this->Lista->procesarIntruccion("eliminar pan");
+        $resultado2 = $this->Lista->procesarInstruccion("eliminar pan");
 
         $this->assertEquals("",$resultado2);
     }

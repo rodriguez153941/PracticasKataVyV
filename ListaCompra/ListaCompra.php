@@ -21,7 +21,7 @@
                 return "el producto seleccionado no existe";
             }
             else{
-                unset($this->lsita[$elemento]);
+                unset($this->lista[$elemento]);
             }
         }
 
@@ -50,7 +50,12 @@
                 else{
                     $this->añadirElemento($partes[1],$partes[2]);
                 }
-                
+            }
+            else if($partes[0] == "eliminar"){
+                $error = $this->eliminarProducto($partes[1]);
+                if(is_string($error)){
+                    return $error;
+                }
             }
             
             return $this->mostrarResultado();
