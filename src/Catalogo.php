@@ -1,6 +1,6 @@
 <?php
 
-namespace AppTombola;
+namespace App;
 
 interface Catalogo {
     public function obtenerPuntos(string $ticket): ?int;
