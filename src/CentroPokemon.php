@@ -27,9 +27,13 @@ class CentroPokemon{
     }
 
     private function darAltaPokemon(string $nombre){
-        if(!isset($this->pokemons[$partes[1]])){
+        if(!isset($this->pokemons[$nombre])){
                 return "El pokemon seleccionado no está ingresado";
             }
+        unset($this->pokemons[$nombre]);
+        if(empty($this->pokemons)){
+            return "El centro se ha quedado vacío";
+        }
     }
 
     private function devolverListaActualizada(){
