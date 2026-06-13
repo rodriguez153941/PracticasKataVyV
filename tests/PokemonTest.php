@@ -78,6 +78,19 @@ class PokemonTest extends TestCase{
         //assert
         $this->assertEquals("El centro se ha quedado vacío",$resultado);
     }
+    public function test_darAlta_pokemon_devolver_lista_actualizada(){
+        //arrange
+        $this->pokedex->method("obtenerHPBase")->willReturnMap([
+            ["pikachu",75],
+            ["squirtle",80]
+        ]);
+        $this->centro->procesarInstruccion("ingresar pikachu 1");
+        $this->centro->procesarInstruccion("ingresar squirtle");
+        //act
+        $resultado = $this->centro->procesarInstruccion("dar_alta pikachu");
+        //assert
+        $this->asserEquals("squirtle x1 | HP Total: 80");
+    }
 }
 
 ?>
