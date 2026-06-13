@@ -58,7 +58,7 @@ class PokemonTest extends TestCase{
         //act
         $resultado = $this->centro->procesarInstruccion("ingresar pikachu 2");
         //assert
-        $this->assertEquals("pikachu x3 | HP Total: 150",$resultado);
+        $this->assertEquals("pikachu x3 | HP Total: 225",$resultado);
     }
 }
 
