@@ -23,6 +23,14 @@ class PokemonTest extends TestCase{
         $this->assertEquals("pikachu x1 | HP Total: 75",$resultado);
         
     }
+    public function test_ingresar_pokemon_con_cantidad_devuelve_centro_actulizado(){
+        //arrange
+        $this->pokedex->method("obtenerHPBase")->with("pikachu")->willReturn(75);
+        //act
+        $resultado = $this->centro->procesarInstruccion("ingresar pikachu 2");
+        //assert 
+        $this->assertEquals("pikachu x2 | HP Total: 75",$resultado);
+    }
 }
 
 ?>
