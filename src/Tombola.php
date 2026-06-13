@@ -58,6 +58,11 @@
                 }
                 return $this->añadirBoleto($partes[1]);
             }
+            if($partes[0] === "devolver"){
+                if(!isset($this->boletos[$partes[1]])){
+                    return "El boleto seleccionado no está en la lista";
+                }
+            }
         }
     }
 ?>
