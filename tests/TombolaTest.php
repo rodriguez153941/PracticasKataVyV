@@ -118,7 +118,7 @@ class TombolaTest extends TestCase{
         $this->tombola->procesarInstruccion("añadir farolillo");
         $this->tombola->procesarInstruccion("añadir jamon 2");
         //act
-        $resultado = $this->tomobola->procesarInstruccion("total puntos");
+        $resultado = $this->tombola->procesarInstruccion("total puntos");
         //assert
         $this->assertEquals("Total puntos: 55",$resultado);
     }

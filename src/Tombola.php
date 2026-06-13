@@ -56,9 +56,14 @@
         }
 
         private function totalPuntos(){
-            if(empty($this->tombola)){
+            if(empty($this->boletos)){
                 return "Total puntos: 0";
             }
+            $puntos = 0;
+            foreach ($this->boletos as $boleto => $cantidad){
+                $puntos += $this->catalogo->obtenerPuntos($boleto) * $cantidad;
+            }
+            return "Total puntos: $puntos";
         }
 
         private function calcularPuntos(){
