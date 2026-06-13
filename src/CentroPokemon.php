@@ -9,13 +9,17 @@ class CentroPokemon{
         $this->pokedex = $pokedex;
     }
 
+    private function ingresarPokemon(string $nombre, int $cantidad = 1){
+        $hp = $this->pokedex->obtenerHPBase($nombre);
+        return "$nombre x1 | HP Total: $hp";
+    }
+
     public function procesarInstruccion(string $instruccion): string{
         $instruccionMinusculas = strtolower($instruccion);
         $partes = explode(" ",$instruccionMinusculas);
 
         if($partes[0] === "ingresar"){
-            $hp = $this->pokedex->obtenerHPBase($partes[1]);
-            return "$partes[1] x1 | HP Total: $hp";
+            return $this->ingresarPokemon($partes[1]);
         }
     }
 }
