@@ -60,6 +60,15 @@ class PokemonTest extends TestCase{
         //assert
         $this->assertEquals("pikachu x3 | HP Total: 225",$resultado);
     }
+    public function test_dar_alta_pokemon_no_esta_centro(){
+        //arrange
+        $this->pokedex->method("obtenerHPBase")->with("pikachu")->willReturn(75);
+        $resultado = $this->centro->procesarInstruccion("ingresar pikachu");
+        //act
+        $resultado = $this->centro->procesarInstruccion("dar_alta squirtle");
+        //assert
+        $this->assertEquals("El pokemon seleccionado no está ingresado",$resultado);
+    }
 }
 
 ?>
