@@ -43,6 +43,10 @@
             if(!isset($this->boletos[$nombre])){
                 return "El boleto seleccionado no está en la lista";
             }
+            unset($this->boletos[$nombre]);
+            if(empty($this->boletos)){
+                return "La lista de boletos ha sido vaciada";
+            }
         }
 
         private function calcularPuntos(){
@@ -65,10 +69,6 @@
                 return $this->añadirBoleto($partes[1]);
             }
             if($partes[0] === "devolver"){
-                unset($this->boletos[$partes[1]]);
-                if(empty($this->boletos)){
-                    return "La lista de boletos ha sido vaciada";
-                }
                 return $this->devolverBoleto($partes[1]);
             }
         }
