@@ -65,6 +65,10 @@
                 return $this->añadirBoleto($partes[1]);
             }
             if($partes[0] === "devolver"){
+                unset($this->boletos[$partes[1]]);
+                if(empty($this->boletos)){
+                    return "La lista de boletos ha sido vaciada";
+                }
                 return $this->devolverBoleto($partes[1]);
             }
         }
