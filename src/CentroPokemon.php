@@ -26,6 +26,12 @@ class CentroPokemon{
         return $this->devolverListaActualizada() . $this->calcularHP();
     }
 
+    private function darAltaPokemon(string $nombre){
+        if(!isset($this->pokemons[$partes[1]])){
+                return "El pokemon seleccionado no está ingresado";
+            }
+    }
+
     private function devolverListaActualizada(){
         
         ksort($this->pokemons);
@@ -56,9 +62,7 @@ class CentroPokemon{
             return $this->ingresarPokemon($partes[1]);
         }
         if($partes[0]==="dar_alta"){
-            if(!isset($this->pokemons[$partes[1]])){
-                return "El pokemon seleccionado no está ingresado";
-            }
+            return $this->darAltaPokemon($partes[1]);
         }
     }
 }
