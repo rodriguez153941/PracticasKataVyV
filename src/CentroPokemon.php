@@ -13,13 +13,18 @@ class CentroPokemon{
 
     private function ingresarPokemon(string $nombre, int $cantidad = 1){
         $this->pokemons[$nombre] = $cantidad;
+        
+        return $this->devolverListaActualizada() . $this->calcularHP();
+    }
+
+    private function devolverListaActualizada(){
         ksort($this->pokemons);
         $pokemonsActualizados = [];
         foreach($this->pokemons as $pokemon => $cantidad){
             
             $pokemonsActualizados[] = $pokemon . " x" . $cantidad;
         }
-        return implode(", ",$pokemonsActualizados) . $this->calcularHP();
+        return implode(", ",$pokemonsActualizados);
     }
     
     private function calcularHP(){
