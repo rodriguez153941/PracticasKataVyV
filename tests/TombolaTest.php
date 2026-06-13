@@ -86,6 +86,19 @@ class TombolaTest extends TestCase{
         //assert
         $this->assertEquals("estrellita x2 | Puntos: 10",$resultado);
     }
+    public function test_vaciar_lista(){
+        //arrange
+        $this->catalogo->method("obtenerPuntos")->willReturnMap([
+            ["estrellita",5],
+            ["farolillo",5]
+        ]);
+        $this->tombola->procesarInstruccion("añadir estrellita 2");
+        $this->tombola->procesarInstruccion("añadir farolillo");
+        //act
+        $resultado = $this->tombola->procesarInstruccion("vaciar lista");
+        //asset
+        $this->assertEquals("La lista de boletos ha sido vaciada",$resultado);
+    }
 
 
 
