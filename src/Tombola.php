@@ -39,6 +39,12 @@
             return $this->devolverListaActualizada() . $this->calcularPuntos();
         }
 
+        private function devolverBoleto($nombre){
+            if(!isset($this->boletos[$nombre])){
+                return "El boleto seleccionado no está en la lista";
+            }
+        }
+
         private function calcularPuntos(){
             $puntos = 0;
             foreach ($this->boletos as $boleto => $cantidad){
@@ -59,9 +65,7 @@
                 return $this->añadirBoleto($partes[1]);
             }
             if($partes[0] === "devolver"){
-                if(!isset($this->boletos[$partes[1]])){
-                    return "El boleto seleccionado no está en la lista";
-                }
+                return $this->devolverBoleto($partes[1]);
             }
         }
     }
