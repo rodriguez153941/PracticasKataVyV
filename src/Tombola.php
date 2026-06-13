@@ -50,6 +50,11 @@
             return $this->devolverListaActualizada() . $this->calcularPuntos();
         }
 
+        private function vaciarLista(){
+            $this->tombola = [];
+            return "La lista de boletos ha sido vaciada";
+        }
+
         private function calcularPuntos(){
             $puntos = 0;
             foreach ($this->boletos as $boleto => $cantidad){
@@ -73,8 +78,7 @@
                 return $this->devolverBoleto($partes[1]);
             }
             if($partes[0]==="vaciar"){
-                $this->tombola = [];
-                return "La lista de boletos ha sido vaciada";
+                return $this->vaciarLista();
             }
         }
     }
