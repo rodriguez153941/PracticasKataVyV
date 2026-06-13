@@ -47,11 +47,11 @@
             if(empty($this->boletos)){
                 return "La lista de boletos ha sido vaciada";
             }
-            return $this->devolverListaActualizada() . $this->calcularPuntos();
+            return $this->devolverListaActualizada();
         }
 
         private function vaciarLista(){
-            $this->tombola = [];
+            $this->boletos = [];
             return "La lista de boletos ha sido vaciada";
         }
 
@@ -74,7 +74,7 @@
             return " | Puntos: $puntos";
         }
 
-        public function procesarInstruccion(string $instruccion){
+        public function procesarInstruccion(string $instruccion): String{
             $instruccionMinusculas = strtoLower($instruccion);
             $partes = explode(" ",$instruccionMinusculas);
 
@@ -94,6 +94,7 @@
             if($partes[0]==="total"){
                 return $this->totalPuntos();
             }
+            return " ";
         }
     }
 ?>
