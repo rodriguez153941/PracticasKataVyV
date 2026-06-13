@@ -73,6 +73,19 @@ class TombolaTest extends TestCase{
         //assert
         $this->assertEquals("La lista de boletos ha sido vaciada",$resultado);
     }
+    public function test_devolver_boleto_quedan_boletos_en_lista_devolver_lista_actualizada(){
+        //arrange
+        $this->catalogo->method("obtenerPuntos")->willReturnMap([
+            ["estrellita",5],
+            ["farolillo",5]
+        ]);
+        $this->tombola->procesarInstruccion("añadir estrellita 2");
+        $this->tombola->procesarInstruccion("añadir farolillo");
+        //act 
+        $resultado = $this->tombola->procesarInstruccion("devolver farolillo");
+        //assert
+        $this->assertEquals("estrellita x2 | Puntos: 10");
+    }
 
 
 
