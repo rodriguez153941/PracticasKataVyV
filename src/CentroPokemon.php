@@ -12,12 +12,17 @@ class CentroPokemon{
     }
 
     private function ingresarPokemon(string $nombre, int $cantidad = 1){
+        if($this->pokedex->obtenerHPBase($nombre)===null){
+            return "La especie seleccionada no está registrada";
+        }    
+
         $this->pokemons[$nombre] = $cantidad;
         
         return $this->devolverListaActualizada() . $this->calcularHP();
     }
 
     private function devolverListaActualizada(){
+        
         ksort($this->pokemons);
         $pokemonsActualizados = [];
         foreach($this->pokemons as $pokemon => $cantidad){
