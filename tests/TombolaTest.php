@@ -55,6 +55,17 @@ class TombolaTest extends TestCase{
         //assert
         $this->assertEquals("estrellita x2, farolillo x1 | Puntos: 15",$resultado);
     }
+    public function test_devolver_boleto_que_no_esta_en_lista_mostrar_mensaje_no_esta_lista(){
+        //arrange
+        $this->catalogo->method("obtenerPuntos")->with("estrella")->willReturn(5);
+        $this->tombola->procesarInstruccion("añadir estrella 2");
+        //act
+        $resultado = $this->tombola->procesarInstruccion("devolver farolillo");
+        //assert
+        $this->assertEquals("El boleto seleccionado no está en la lista",$resultado);
+    }
+
+
 
 
 
