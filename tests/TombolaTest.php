@@ -26,6 +26,14 @@ class TombolaTest extends TestCase{
         //assert
         $this->assertEquals("estrella x2 | Puntos: 10",$resultado);
     }
+    public function test_añadir_boleto_no_existente(){
+        //arrange
+        $this->catalogo->method("obtenerPuntos")->with("pizza")->willReturn(null);
+        //act
+        $resultado = $this->tombola->procesarInstruccion("añadir pizza 3");
+        //asser
+        $this->assertEquals("El boleto seleccionado no es válido",$resultado);
+    }
 
 }
 
