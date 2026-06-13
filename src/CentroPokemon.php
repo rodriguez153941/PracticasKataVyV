@@ -12,15 +12,22 @@ class CentroPokemon{
     }
 
     private function ingresarPokemon(string $nombre, int $cantidad = 1){
-        $hp = 0;
         $this->pokemons[$nombre] = $cantidad;
         ksort($this->pokemons);
         $pokemonsActualizados = [];
         foreach($this->pokemons as $pokemon => $cantidad){
-            $hp += $this->pokedex->obtenerHPBase($pokemon)*$cantidad;
+            
             $pokemonsActualizados[] = $pokemon . " x" . $cantidad;
         }
-        return implode(", ",$pokemonsActualizados) . " | HP Total: $hp";
+        return implode(", ",$pokemonsActualizados) . $this->calcularHP();
+    }
+    
+    private function calcularHP(){
+        $hp = 0;
+        foreach($this->pokemons as $pokemon => $cantidad){
+            $hp += $this->pokedex->obtenerHPBase($pokemon)*$cantidad;
+        }
+        return " | HP Total: $hp";
     }
 
     public function procesarInstruccion(string $instruccion): string{
