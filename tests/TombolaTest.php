@@ -99,6 +99,14 @@ class TombolaTest extends TestCase{
         //asset
         $this->assertEquals("La lista de boletos ha sido vaciada",$resultado);
     }
+    public function test_mostrar_total_puntos_lista_vacia(){
+        //arrange
+
+        //act
+        $resultado = $this->tombola->procesarInstruccion("total");
+        //assert
+        $this->assertEquals("Total puntos: 0",$resultado);
+    }
 
 
 
