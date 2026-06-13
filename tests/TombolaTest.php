@@ -64,6 +64,15 @@ class TombolaTest extends TestCase{
         //assert
         $this->assertEquals("El boleto seleccionado no está en la lista",$resultado);
     }
+    public function test_devolver_boleto_queda_lista_vacia_devuelve_mensaje_lista_vacia(){
+        //arrange
+        $this->catalogo->method("obtenerPuntos")->with("estrella")->willReturn(5);
+        $this->tombola->procesarInstruccion("añadir estrella 2");
+        //act 
+        $resultado = $this->tombola->procesarInstruccion("devolver estrella");
+        //assert
+        $this->assertEquals("La lista de boletos ha sido vaciada",$resultado);
+    }
 
 
 
