@@ -69,6 +69,15 @@ class PokemonTest extends TestCase{
         //assert
         $this->assertEquals("El pokemon seleccionado no está ingresado",$resultado);
     }
+    public function test_darAlta_pokemon_dejar_centro_vacio(){
+        //arrange
+        $this->pokedex->method("obtenerHPBase")->with("pikachu")->willReturn(75);
+        $resultado = $this->centro->procesarInstruccion("ingresar pikachu");
+        //act
+        $resultado = $this->centro->procesarInstruccion("dar_alta pikachu");
+        //assert
+        $this->assertEquals("El centro se ha quedado vacío",$resultado);
+    }
 }
 
 ?>
