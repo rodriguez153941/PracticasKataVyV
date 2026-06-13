@@ -4,19 +4,53 @@
     use App\Catalogo;
     
     class Tombola{
+        private  array $boletos;
         private Catalogo $catalogo;
 
         public function __construct(Catalogo $catalogo){
             $this->catalogo = $catalogo;
+            $this->boletos = [];
+        }
+
+        private function devolverListaActualizada(): String {
+            if(empty($this->boletos)){
+                return " ";
+            }
+            ksort($this->boletos);
+            $listaActualizada = [];
+
+            foreach($this->boletos as $boleto => $cantidad){
+                $puntos = $this->catalogo->obtenerPuntos($boleto) * $cantidad;
+                $listaActualizada[] = $boleto . " x" . $cantidad . " | Puntos: " . $puntos ;
+            }
+            return implode(",",$listaActualizada);
+        }
+
+        private function añadirBoleto(String $nombre, $cantidad = 1){
+            $puntos = $this->catalogo->obtenerPuntos($nombre);
+            if($puntos === null){
+                return "El boleto seleccionado no es válido";
+            }
+            if(isset($this->boletos[$nombre])){
+                $this->boletos[$nombre] += $cantidad;
+            }
+            else{
+                $this->boletos[$nombre] = $cantidad;
+            }
+            return $this->devolverListaActualizada();
         }
 
         public function procesarInstruccion(string $instruccion){
             $instruccionMinusculas = strtoLower($instruccion);
             $partes = explode(" ",$instruccionMinusculas);
-            $precio = $this->catalogo->obtenerPuntos($partes[1]) * (int)$partes[2];
+            $puntos = $this->catalogo->obtenerPuntos($partes[1]) * (int)$partes[2];
 
-            if($partes[0] == "añadir"){
-                return("$partes[1] x$partes[2] | Puntos: $precio");
+            if($partes[0] === "añadir"){
+
+                if(count($partes)==3){
+                    return $this->añadirBoleto($partes[1],$partes[2]);
+                }
+                return $this->añadirBoleto($partes[1]);
             }
         }
     }

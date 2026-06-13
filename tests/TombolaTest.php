@@ -24,7 +24,7 @@ class TombolaTest extends TestCase{
         $resultado = $this->tombola->procesarInstruccion('añadir estrella 2');
 
         //assert
-        $this->assertEquals($resultado, "estrella x2 | Puntos: 10");
+        $this->assertEquals("estrella x2 | Puntos: 10",$resultado);
     }
 
 }
