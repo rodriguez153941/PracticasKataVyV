@@ -72,6 +72,10 @@
             if($partes[0] === "devolver"){
                 return $this->devolverBoleto($partes[1]);
             }
+            if($partes[0]==="vaciar"){
+                $this->tombola = [];
+                return "La lista de boletos ha sido vaciada";
+            }
         }
     }
 ?>
