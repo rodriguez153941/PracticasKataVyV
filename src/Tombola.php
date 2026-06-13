@@ -18,12 +18,11 @@
             }
             ksort($this->boletos);
             $listaActualizada = [];
-
-            foreach($this->boletos as $boleto => $cantidad){
-                $puntos = $this->catalogo->obtenerPuntos($boleto) * $cantidad;
-                $listaActualizada[] = $boleto . " x" . $cantidad . " | Puntos: " . $puntos ;
+            foreach($this->boletos as $boleto => $cantidad){              
+                $listaActualizada[] = $boleto . " x" . $cantidad ;
             }
-            return implode(",",$listaActualizada);
+            
+            return implode(",",$listaActualizada) ;
         }
 
         private function añadirBoleto(String $nombre, $cantidad = 1){
@@ -37,13 +36,20 @@
             else{
                 $this->boletos[$nombre] = $cantidad;
             }
-            return $this->devolverListaActualizada();
+            return $this->devolverListaActualizada() . $this->calcularPuntos();
+        }
+
+        private function calcularPuntos(){
+            $puntos = 0;
+            foreach ($this->boletos as $boleto => $cantidad){
+                $puntos = $this->catalogo->obtenerPuntos($boleto) * $cantidad;
+            }
+            return " | Puntos: $puntos";
         }
 
         public function procesarInstruccion(string $instruccion){
             $instruccionMinusculas = strtoLower($instruccion);
             $partes = explode(" ",$instruccionMinusculas);
-            $puntos = $this->catalogo->obtenerPuntos($partes[1]) * (int)$partes[2];
 
             if($partes[0] === "añadir"){
 
