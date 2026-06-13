@@ -107,6 +107,21 @@ class TombolaTest extends TestCase{
         //assert
         $this->assertEquals("Total puntos: 0",$resultado);
     }
+    public function test_mostrar_total_puntos_de_lista_actual(){
+        //arrange
+        $this->catalogo->method("obtenerPuntos")->willReturnMap([
+            ["estrellita",5],
+            ["farolillo",5],
+            ["jamon",20]
+        ]);
+        $this->tombola->procesarInstruccion("añadir estrellita 2");
+        $this->tombola->procesarInstruccion("añadir farolillo");
+        $this->tombola->procesarInstruccion("añadir jamon 2");
+        //act
+        $resultado = $this->tomobola->procesarInstruccion("total puntos");
+        //assert
+        $this->assertEquals("Total puntos: 55",$resultado);
+    }
 
 
 
