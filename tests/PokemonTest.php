@@ -51,6 +51,15 @@ class PokemonTest extends TestCase{
         //assert
         $this->assertEquals("La especie seleccionada no está registrada",$resultado);
     }
+    public function test_ingresar_pokemon_existete_aumenta_cantidad_devuelve_lista_actualizada(){
+        //arrange
+        $this->pokedex->method("obtenerHPBase")->with("pikachu")->willReturn(75);
+        $resultado = $this->centro->procesarInstruccion("ingresar pikachu");
+        //act
+        $resultado = $this->centro->procesarInstruccion("ingresar pikachu 2");
+        //assert
+        $this->assertEquals("pikachu x3 | HP Total: 150",$resultado);
+    }
 }
 
 ?>
