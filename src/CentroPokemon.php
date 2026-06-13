@@ -55,6 +55,11 @@ class CentroPokemon{
             }
             return $this->ingresarPokemon($partes[1]);
         }
+        if($partes[0]==="dar_alta"){
+            if(!isset($this->pokemons[$partes[1]])){
+                return "El pokemon seleccionado no está ingresado";
+            }
+        }
     }
 }
 ?>
