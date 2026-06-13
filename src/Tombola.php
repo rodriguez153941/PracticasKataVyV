@@ -55,6 +55,12 @@
             return "La lista de boletos ha sido vaciada";
         }
 
+        private function totalPuntos(){
+            if(empty($this->tombola)){
+                return "Total puntos: 0";
+            }
+        }
+
         private function calcularPuntos(){
             $puntos = 0;
             foreach ($this->boletos as $boleto => $cantidad){
@@ -81,9 +87,7 @@
                 return $this->vaciarLista();
             }
             if($partes[0]==="total"){
-                if(empty($this->tombola)){
-                    return "Total puntos: 0";
-                }
+                return $this->totalPuntos();
             }
         }
     }
