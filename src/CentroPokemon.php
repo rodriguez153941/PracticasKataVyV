@@ -34,6 +34,7 @@ class CentroPokemon{
         if(empty($this->pokemons)){
             return "El centro se ha quedado vacío";
         }
+        return $this->devolverListaActualizada();
     }
 
     private function devolverListaActualizada(){
