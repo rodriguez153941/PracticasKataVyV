@@ -22,7 +22,7 @@
                 $listaActualizada[] = $boleto . " x" . $cantidad ;
             }
             
-            return implode(",",$listaActualizada) ;
+            return implode(", ",$listaActualizada) ;
         }
 
         private function añadirBoleto(String $nombre, $cantidad = 1){
@@ -42,7 +42,7 @@
         private function calcularPuntos(){
             $puntos = 0;
             foreach ($this->boletos as $boleto => $cantidad){
-                $puntos = $this->catalogo->obtenerPuntos($boleto) * $cantidad;
+                $puntos += $this->catalogo->obtenerPuntos($boleto) * $cantidad;
             }
             return " | Puntos: $puntos";
         }
