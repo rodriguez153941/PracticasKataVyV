@@ -80,6 +80,11 @@
             if($partes[0]==="vaciar"){
                 return $this->vaciarLista();
             }
+            if($partes[0]==="total"){
+                if(empty($this->tombola)){
+                    return "Total puntos: 0";
+                }
+            }
         }
     }
 ?>
