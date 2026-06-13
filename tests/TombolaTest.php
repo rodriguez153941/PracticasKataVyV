@@ -84,7 +84,7 @@ class TombolaTest extends TestCase{
         //act 
         $resultado = $this->tombola->procesarInstruccion("devolver farolillo");
         //assert
-        $this->assertEquals("estrellita x2 | Puntos: 10");
+        $this->assertEquals("estrellita x2 | Puntos: 10",$resultado);
     }
 
 

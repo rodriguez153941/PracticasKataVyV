@@ -47,6 +47,7 @@
             if(empty($this->boletos)){
                 return "La lista de boletos ha sido vaciada";
             }
+            return $this->devolverListaActualizada() . $this->calcularPuntos();
         }
 
         private function calcularPuntos(){
