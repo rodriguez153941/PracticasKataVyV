@@ -29,7 +29,7 @@ class PokemonTest extends TestCase{
         //act
         $resultado = $this->centro->procesarInstruccion("ingresar pikachu 2");
         //assert 
-        $this->assertEquals("pikachu x2 | HP Total: 75",$resultado);
+        $this->assertEquals("pikachu x2 | HP Total: 150",$resultado);
     }
     public function test_ingresar_varios_pokemon_devuelve_centro_actualizado(){
         //arrange
@@ -37,11 +37,11 @@ class PokemonTest extends TestCase{
             ["pikachu",75],
             ["squirtle",80]
         ]);
-        $this->centro->procesarInstruccion("ingresar pikachu 2");
+        $this->centro->procesarInstruccion("ingresar pikachu 1");
         //act
         $resultado = $this->centro->procesarInstruccion("ingresar squirtle");
         //assert
-        $this->assertEquals("pikachu x2, squirtle x1 | HP Total: 155",$resultado);
+        $this->assertEquals("pikachu x1, squirtle x1 | HP Total: 155",$resultado);
     }
 }
 

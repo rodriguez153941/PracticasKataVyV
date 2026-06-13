@@ -4,14 +4,23 @@ use App\Pokedex;
 
 class CentroPokemon{
     private Pokedex $pokedex;    
-
+    private array $pokemons;
+    
     public function __construct(Pokedex $pokedex){
         $this->pokedex = $pokedex;
+        $this->pokemons = [];
     }
 
     private function ingresarPokemon(string $nombre, int $cantidad = 1){
-        $hp = $this->pokedex->obtenerHPBase($nombre);
-        return "$nombre x$cantidad | HP Total: $hp";
+        $hp = 0;
+        $this->pokemons[$nombre] = $cantidad;
+        ksort($this->pokemons);
+        $pokemonsActualizados = [];
+        foreach($this->pokemons as $pokemon => $cantidad){
+            $hp += $this->pokedex->obtenerHPBase($pokemon)*$cantidad;
+            $pokemonsActualizados[] = $pokemon . " x" . $cantidad;
+        }
+        return implode(", ",$pokemonsActualizados) . " | HP Total: $hp";
     }
 
     public function procesarInstruccion(string $instruccion): string{
