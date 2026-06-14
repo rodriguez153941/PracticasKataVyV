@@ -7,7 +7,12 @@ class ListaCompra{
         $this->lista = [];
     }
     public function añadirProducto($nombre,$cantidad = 1){
-        $this->lista[$nombre] = $cantidad;
+        if(isset($this->lista[$nombre])){
+            $this->lista[$nombre] += $cantidad;
+        }
+        else{   
+            $this->lista[$nombre] = $cantidad;
+        }
         return $this->devolverListaActualizada();
     }
     private function devolverListaActualizada(){
