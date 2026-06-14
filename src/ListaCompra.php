@@ -34,6 +34,10 @@ class ListaCompra{
             }
             return $this->añadirProducto($partes[1]); 
         }
+        if($partes[0]==="eliminar"){
+            unset($this->lista[$partes[1]]);
+            return $this->devolverListaActualizada();
+        }
 
         return "";
     }
