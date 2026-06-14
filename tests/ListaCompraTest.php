@@ -57,11 +57,12 @@ class ListaCompraTest extends TestCase{
         //assert
         $this->assertEquals("leche x2",$resultado);
     }
-    public function test_eliminar_producto_queda_lista_vacia(){
-        ///arrange
+    public function test_eliminar_producto_no_existente_de_la_lista(){
+        //arrange
         $this->lista->procesarInstruccion("añadir pan 3");
+        $this->lista->procesarInstruccion("añadir leche 2");
         //act
-        $resultado = $this->lista->procesarInstruccion("eliminar pan");
+        $resultado = $this->lista->procesarInstruccion("eliminar tomate");
         //assert
         $this->assertEquals("El producto seleccionado no existe",$resultado);
     }
@@ -74,15 +75,7 @@ class ListaCompraTest extends TestCase{
         //assert
         $this->assertEquals("",$resultado);
     }
-    public function test_eliminar_producto_no_existente_de_la_lista(){
-        //arrange
-        $this->lista->procesarInstruccion("añadir pan 3");
-        $this->lista->procesarInstruccion("añadir leche 2");
-        //act
-        $resultado = $this->lista->procesarInstruccion("eliminar tomate");
-        //assert
-        $this->assertEquals("El producto seleccionado no existe",$resultado);
-    }
+    
 }
 
 ?>
