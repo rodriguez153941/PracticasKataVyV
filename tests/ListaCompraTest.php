@@ -57,6 +57,14 @@ class ListaCompraTest extends TestCase{
         //assert
         $this->assertEquals("leche x2",$resultado);
     }
+    public function test_eliminar_producto_queda_lista_vacia(){
+        ///arrange
+        $this->lista->procesarInstruccion("añadir pan 3");
+        //act
+        $resultado = $this->lista->procesarInstruccion("eliminar pan");
+        //assert
+        $this->assertEquals("El producto seleccionado no existe",$resultado);
+    }
 }
 
 ?>
