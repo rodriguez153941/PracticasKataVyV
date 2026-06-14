@@ -18,6 +18,13 @@ class ListaCompraTest extends TestCase{
         //assert
         $this->assertEquals("pan x1",$resultado);
     }
+    public function test_añadir_producto_sin_indicar_cantidad_producto_en_mayusculas(){
+        //arrange
+        //act
+        $resultado = $this->lista->procesarInstruccion("Añadir Pan");
+        //assert
+        $this->assertEquals("pan x1",$resultado);
+    }
 }
 
 ?>
