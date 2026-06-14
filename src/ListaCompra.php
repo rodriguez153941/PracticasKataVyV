@@ -8,6 +8,9 @@ class ListaCompra{
     }
     public function añadirProducto($nombre,$cantidad = 1){
         $this->lista[$nombre] = $cantidad;
+        return $this->devolverListaActualizada();
+    }
+    private function devolverListaActualizada(){
         ksort($this->lista);
         $listaActualizada = [];
         foreach($this->lista as $producto => $cantidad){
