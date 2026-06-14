@@ -41,12 +41,21 @@ class ListaCompraTest extends TestCase{
         $this->assertEquals("leche x2, pan x3",$resultado);
     }
     public function test_aumentar_cantidad_producto_existente(){
-        ////arrange
+        //arrange
         $this->lista->procesarInstruccion("añadir pan 3");
         //act
         $resultado = $this->lista->procesarInstruccion("añadir pan 2");
         //assert
         $this->assertEquals("pan x5",$resultado);
+    }
+    public function test_eliminar_prodcuto_existente_en_lista(){
+        //arrange
+        $this->lista->procesarInstruccion("añadir pan 3");
+        $this->lista->procesarInstruccion("añadir leche 2");
+        //act
+        $resultado = $this->lista->procesarInstruccion("eliminar pan");
+        //assert
+        $this->assertEquals("leche x2",$resultado);
     }
 }
 
