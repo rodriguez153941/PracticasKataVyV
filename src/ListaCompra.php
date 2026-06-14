@@ -17,6 +17,9 @@ class ListaCompra{
     }
     private function eliminarProducto($nombre){
         unset($this->lista[$nombre]);
+        if(empty($this->lista)){
+            return "El producto seleccionado no existe";
+        }
         return $this->devolverListaActualizada();
     }
     private function devolverListaActualizada(){
