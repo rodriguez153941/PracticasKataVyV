@@ -104,6 +104,19 @@ class PokemonTest extends TestCase{
         //assert
         $this->assertEquals("El centro se ha quedado vacío",$resultado);
     }
+    public function test_evaluar_hp_del_centro_pokemon(){
+        //arrange
+        $this->pokedex->method("obtenerHPBase")->willReturnMap([
+            ["pikachu",75],
+            ["squirtle",80]
+        ]);
+        $this->centro->procesarInstruccion("ingresar pikachu 1");
+        $this->centro->procesarInstruccion("ingresar squirtle");
+        //act
+        $resultado = $this->centro->procesarInstruccion("evaluar");
+        //assert
+        $this->assertEquals("HP Total: 155",$resultado);
+    }
 }
 
 ?>
