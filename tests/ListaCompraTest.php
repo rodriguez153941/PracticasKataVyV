@@ -74,6 +74,15 @@ class ListaCompraTest extends TestCase{
         //assert
         $this->assertEquals("",$resultado);
     }
+    public function test_eliminar_producto_no_existente_de_la_lista(){
+        //arrange
+        $this->lista->procesarInstruccion("añadir pan 3");
+        $this->lista->procesarInstruccion("añadir leche 2");
+        //act
+        $resultado = $this->lista->procesarInstruccion("eliminar tomate");
+        //assert
+        $this->assertEquals("El producto seleccionado no existe",$resultado);
+    }
 }
 
 ?>
