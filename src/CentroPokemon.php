@@ -69,6 +69,10 @@ class CentroPokemon{
         if($partes[0]==="dar_alta"){
             return $this->darAltaPokemon($partes[1]);
         }
+        if($partes[0]==="vaciar"){
+            $this->pokemons = [];
+            return "El centro se ha quedado vacío";
+        }
     }
 }
 ?>
