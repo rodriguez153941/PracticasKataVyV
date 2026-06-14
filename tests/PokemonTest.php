@@ -117,6 +117,12 @@ class PokemonTest extends TestCase{
         //assert
         $this->assertEquals("HP Total: 155",$resultado);
     }
+    public function test_evaluar_HP_centro_vacio(){
+        //act
+        $resultado = $this->centro->procesarInstruccion("evaluar");
+        //assert
+        $this->assertEquals("HP Total: 0",$resultado);
+    }
 }
 
 ?>
