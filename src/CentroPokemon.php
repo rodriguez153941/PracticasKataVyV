@@ -36,6 +36,10 @@ class CentroPokemon{
         }
         return $this->devolverListaActualizada();
     }
+    private function vaciarCentro(){
+        $this->pokemons = [];
+        return "El centro se ha quedado vacío";
+    }
 
     private function devolverListaActualizada(){
         
@@ -70,8 +74,7 @@ class CentroPokemon{
             return $this->darAltaPokemon($partes[1]);
         }
         if($partes[0]==="vaciar"){
-            $this->pokemons = [];
-            return "El centro se ha quedado vacío";
+            return $this->vaciarCentro();
         }
     }
 }
