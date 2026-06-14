@@ -15,6 +15,10 @@ class ListaCompra{
         }
         return $this->devolverListaActualizada();
     }
+    private function eliminarProducto($nombre){
+        unset($this->lista[$nombre]);
+        return $this->devolverListaActualizada();
+    }
     private function devolverListaActualizada(){
         ksort($this->lista);
         $listaActualizada = [];
@@ -35,8 +39,7 @@ class ListaCompra{
             return $this->añadirProducto($partes[1]); 
         }
         if($partes[0]==="eliminar"){
-            unset($this->lista[$partes[1]]);
-            return $this->devolverListaActualizada();
+            return $this->eliminarProducto($partes[1]);
         }
 
         return "";
