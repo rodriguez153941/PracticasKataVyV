@@ -32,6 +32,14 @@ class ListaCompraTest extends TestCase{
         //assert
         $this->assertEquals("pan x3",$resultado);
     }
+    public function test_añadir_varios_productos_devuelve_lista_actualizada(){
+        //arrange
+        $this->lista->procesarInstruccion("añadir pan 3");
+        //act
+        $resultado = $this->lista->procesarInstruccion("añadir leche 2");
+        //assert
+        $this->assertEquals("leche x2, pan x1",$resultado);
+    }
 }
 
 ?>
