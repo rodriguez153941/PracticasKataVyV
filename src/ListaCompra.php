@@ -14,6 +14,9 @@ class ListaCompra{
         $partes = explode(" ",$instruccionMinus);
 
         if($partes[0]==="añadir"){
+            if(count($partes)===3){
+                return $this->añadirProducto($partes[1],$partes[2]);
+            }
             return $this->añadirProducto($partes[1]); 
         }
 
