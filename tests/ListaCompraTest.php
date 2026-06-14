@@ -38,7 +38,7 @@ class ListaCompraTest extends TestCase{
         //act
         $resultado = $this->lista->procesarInstruccion("añadir leche 2");
         //assert
-        $this->assertEquals("leche x2, pan x1",$resultado);
+        $this->assertEquals("leche x2, pan x3",$resultado);
     }
 }
 

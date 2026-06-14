@@ -2,11 +2,18 @@
 namespace App;
 
 class ListaCompra{
+    private array $lista;
     public function __construct(){
-
+        $this->lista = [];
     }
     public function añadirProducto($nombre,$cantidad = 1){
-        return $nombre . " x" . $cantidad;
+        $this->lista[$nombre] = $cantidad;
+        ksort($this->lista);
+        $listaActualizada = [];
+        foreach($this->lista as $producto => $cantidad){
+            $listaActualizada[] = $producto . " x" . $cantidad;
+        }
+        return implode(", ",$listaActualizada);
     }
 
     public function procesarInstruccion(string $instruccion): string{
