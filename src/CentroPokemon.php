@@ -23,7 +23,7 @@ class CentroPokemon{
         }
         
         
-        return $this->devolverListaActualizada() . $this->calcularHP();
+        return $this->devolverListaActualizada() . " | " . $this->calcularHP();
     }
 
     private function darAltaPokemon(string $nombre){
@@ -57,7 +57,7 @@ class CentroPokemon{
         foreach($this->pokemons as $pokemon => $cantidad){
             $hp += $this->pokedex->obtenerHPBase($pokemon)*$cantidad;
         }
-        return " | HP Total: $hp";
+        return "HP Total: $hp";
     }
 
     public function procesarInstruccion(string $instruccion): string{
@@ -75,6 +75,9 @@ class CentroPokemon{
         }
         if($partes[0]==="vaciar"){
             return $this->vaciarCentro();
+        }
+        if($partes[0]==="evaluar"){
+            return $this->calcularHP();
         }
     }
 }
