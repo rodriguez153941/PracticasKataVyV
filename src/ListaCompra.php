@@ -6,7 +6,7 @@ class ListaCompra{
     public function __construct(){
         $this->lista = [];
     }
-    public function añadirProducto($nombre,$cantidad = 1){
+    private function añadirProducto($nombre,$cantidad = 1){
         if(isset($this->lista[$nombre])){
             $this->lista[$nombre] += $cantidad;
         }
