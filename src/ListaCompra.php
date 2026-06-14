@@ -44,6 +44,10 @@ class ListaCompra{
         if($partes[0]==="eliminar"){
             return $this->eliminarProducto($partes[1]);
         }
+        if($partes[0]==="vaciar"){
+            $this->lista = [];
+            return "";
+        }
 
         return "";
     }
