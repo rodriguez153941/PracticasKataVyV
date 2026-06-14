@@ -91,6 +91,19 @@ class PokemonTest extends TestCase{
         //assert
         $this->assertEquals("squirtle x1",$resultado);
     }
+    public function test_vaciar_centro_pokemon(){
+        //arrange
+        $this->pokedex->method("obtenerHPBase")->willReturnMap([
+            ["pikachu",75],
+            ["squirtle",80]
+        ]);
+        $this->centro->procesarInstruccion("ingresar pikachu 1");
+        $this->centro->procesarInstruccion("ingresar squirtle");
+        //act 
+        $resultado = $this->centro->procesarInstruccion("vaciar");
+        //assert
+        $this->assertEquals("El centro se ha quedado vacío",$resultado);
+    }
 }
 
 ?>
