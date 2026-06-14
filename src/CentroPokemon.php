@@ -79,6 +79,7 @@ class CentroPokemon{
         if($partes[0]==="evaluar"){
             return $this->calcularHP();
         }
+        return "";
     }
 }
 ?>
